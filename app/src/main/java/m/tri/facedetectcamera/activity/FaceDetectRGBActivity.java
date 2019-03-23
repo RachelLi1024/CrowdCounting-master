@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
+import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -239,31 +240,37 @@ public final class FaceDetectRGBActivity extends AppCompatActivity implements Su
         resetData();
     }
 
-    //take pictures
+    //take pictures and store to Gallery
     public void btnClick(View view){
-        mCamera.takePicture(null, null, new TakePictureCallback());
+        mCamera.takePicture(null, null, jpegCallback);
     }
-    private final class TakePictureCallback implements Camera.PictureCallback {
+    private Camera.PictureCallback jpegCallback = new Camera.PictureCallback() {
         public void onPictureTaken(byte[] data, Camera camera) {
             try {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-                File file = new File(Environment.getExternalStorageDirectory(),System.currentTimeMillis()+".jpg");
-                String fileName = System.currentTimeMillis() + ".jpg";
-                FileOutputStream outputStream = new FileOutputStream(file);
-                String path = file.toString();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-                //MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", "description");
-                //saveBitmapToSD(bitmap,path);
-                outputStream.close();
 
-                MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, fileName, null);
-                sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + path)));
+                Camera.Parameters ps = mCamera.getParameters();
+                if (ps.getPictureFormat() == PixelFormat.JPEG) {
+                    //save
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                    File file = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
+                    String fileName = System.currentTimeMillis() + ".jpg";
+                    FileOutputStream outputStream = new FileOutputStream(file);
+                    String path = file.toString();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                    //MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", "description");
+                    //saveBitmapToSD(bitmap,path);
+                    outputStream.close();
+
+                    MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, fileName, null);
+                    sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + path)));
+                }
+
 
             } catch (Exception e) {
                 Log.e(TAG, e.toString());
             }
         }
-    }
+    };
 
     /*
     public static boolean saveBitmapToSD(Bitmap bitmap, String path)
