@@ -1,2 +1,2 @@
-A project use class media.FaceDetector android. Not  OpenCV or Luxand FaceSDK.
+A project uses class andriod.media.FaceDetector android. Not  OpenCV or Luxand FaceSDK.
 
