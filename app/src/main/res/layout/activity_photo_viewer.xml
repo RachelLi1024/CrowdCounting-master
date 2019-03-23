@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/resultPic"
+            android:layout_width="90dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="520dp"
+            android:text="Count result:" />
+
+        <TextView
+            android:id="@+id/cntPic"
+            android:layout_width="98dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="520dp"
+            />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="500dp"
+        android:layout_weight="1">
+
+    <m.tri.facedetectcamera.activity.ui.FaceView
+        android:id="@+id/faceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       />
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="@dimen/image_preview"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:scrollbars="vertical" />
+
+
+</RelativeLayout>
