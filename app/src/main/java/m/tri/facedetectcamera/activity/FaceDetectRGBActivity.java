@@ -250,9 +250,7 @@ public final class FaceDetectRGBActivity extends AppCompatActivity implements Su
                 File file = new File(Environment.getExternalStorageDirectory(),System.currentTimeMillis()+".jpg");
                 String fileName = System.currentTimeMillis() + ".jpg";
                 FileOutputStream outputStream = new FileOutputStream(file);
-
                 String path = file.toString();
-
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
                 //MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", "description");
                 //saveBitmapToSD(bitmap,path);
