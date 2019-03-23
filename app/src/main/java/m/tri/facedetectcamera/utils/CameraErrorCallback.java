@@ -3,10 +3,6 @@ package m.tri.facedetectcamera.utils;
 import android.hardware.Camera;
 import android.util.Log;
 
-/**
- * Created by Nguyen on 5/20/2016.
- */
-
 public class CameraErrorCallback implements Camera.ErrorCallback {
 
     private static final String TAG = "CameraErrorCallback";

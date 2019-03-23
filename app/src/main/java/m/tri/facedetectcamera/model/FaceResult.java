@@ -2,10 +2,6 @@ package m.tri.facedetectcamera.model;
 
 import android.graphics.PointF;
 
-/**
- * Created by Nguyen on 5/20/2016.
- */
-
 public class FaceResult extends Object {
 
     private PointF midEye;

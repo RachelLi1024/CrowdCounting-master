@@ -1,6 +1,3 @@
-// Copyright (c) Philipp Wagner. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
 package m.tri.facedetectcamera.activity.ui;
 
 import android.content.Context;
@@ -16,10 +13,6 @@ import android.view.View;
 import java.text.DecimalFormat;
 
 import m.tri.facedetectcamera.model.FaceResult;
-
-/**
- * Created by Nguyen on 5/20/2016.
- */
 
 /**
  * This class is a simple View to display the faces.

@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import m.tri.facedetectcamera.activity.FaceDetectGrayActivity;
+//import m.tri.facedetectcamera.activity.FaceDetectGrayActivity;
 import m.tri.facedetectcamera.activity.FaceDetectRGBActivity;
 import m.tri.facedetectcamera.activity.PhotoDetectActivity;
 
@@ -90,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && requestCode == RC_HANDLE_CAMERA_PERM_GRAY) {
+     /*   if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && requestCode == RC_HANDLE_CAMERA_PERM_GRAY) {
             Intent intent = new Intent(mContext, FaceDetectGrayActivity.class);
             startActivity(intent);
             return;
-        }
+        }*/
 
         Log.e(TAG, "Permission not granted: results len = " + grantResults.length +
                 " Result code = " + (grantResults.length > 0 ? grantResults[0] : "(empty)"));

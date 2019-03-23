@@ -16,9 +16,6 @@ import java.io.IOException;
 
 import m.tri.facedetectcamera.model.FaceResult;
 
-/**
- * Created by Nguyen on 5/20/2016.
- */
 
 public class ImageUtils {
 

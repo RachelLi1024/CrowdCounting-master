@@ -2,6 +2,7 @@ package m.tri.facedetectcamera.activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
@@ -11,9 +12,12 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.YuvImage;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +36,9 @@ import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -231,6 +238,62 @@ public final class FaceDetectRGBActivity extends AppCompatActivity implements Su
         super.onDestroy();
         resetData();
     }
+
+    //take pictures
+    public void btnClick(View view){
+        mCamera.takePicture(null, null, new TakePictureCallback());
+    }
+    private final class TakePictureCallback implements Camera.PictureCallback {
+        public void onPictureTaken(byte[] data, Camera camera) {
+            try {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                File file = new File(Environment.getExternalStorageDirectory(),System.currentTimeMillis()+".jpg");
+                String fileName = System.currentTimeMillis() + ".jpg";
+                FileOutputStream outputStream = new FileOutputStream(file);
+
+                String path = file.toString();
+
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                //MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", "description");
+                //saveBitmapToSD(bitmap,path);
+                outputStream.close();
+
+                MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, fileName, null);
+                sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + path)));
+
+            } catch (Exception e) {
+                Log.e(TAG, e.toString());
+            }
+        }
+    }
+
+    /*
+    public static boolean saveBitmapToSD(Bitmap bitmap, String path)
+    {
+        boolean flag = false;
+        if(bitmap == null || path == null || path.length() == 0)
+            return flag;
+        File file = new File(path);
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG,100,fos);
+            fos.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if(fos != null)
+            {
+                flag = true;
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return flag;
+    }*/
 
 
     @Override
@@ -609,6 +672,7 @@ public final class FaceDetectRGBActivity extends AppCompatActivity implements Su
                     if (counter == (Integer.MAX_VALUE - 1000))
                         counter = 0;
 
+                    //display result
                     cntCam = (TextView) findViewById(R.id.cntCam);
                     String s1 = Integer.toString(counterW);
                     cntCam.setText(s1);
