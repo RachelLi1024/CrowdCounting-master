@@ -6,31 +6,33 @@
 
     >
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="512dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/resultPic"
-            android:layout_width="90dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="520dp"
+            android:layout_marginRight="2dp"
             android:text="Count result:"
-            android:textColor="#d6204b"/>
+            android:textColor="#d6204b" />
 
         <TextView
             android:id="@+id/cntPic"
-            android:layout_width="20dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="520dp"
-            android:textColor="#d6204b"
-            />
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/resultPic"
+            android:textColor="#d6204b" />
 
-    </LinearLayout>
+    </RelativeLayout>
+
 
 
     <FrameLayout
@@ -38,11 +40,10 @@
         android:layout_height="500dp"
         android:layout_weight="1">
 
-    <m.tri.facedetectcamera.activity.ui.FaceView
-        android:id="@+id/faceView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       />
+        <m.tri.facedetectcamera.activity.ui.FaceView
+            android:id="@+id/faceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </FrameLayout>
 
     <android.support.v7.widget.RecyclerView
