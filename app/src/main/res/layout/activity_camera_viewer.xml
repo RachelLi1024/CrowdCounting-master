@@ -44,7 +44,7 @@
 
         <Button
             android:id="@+id/shoot"
-            android:layout_width="35dp"
+            android:layout_width="33dp"
             android:layout_height="35dp"
             android:onClick="btnClick"
 
