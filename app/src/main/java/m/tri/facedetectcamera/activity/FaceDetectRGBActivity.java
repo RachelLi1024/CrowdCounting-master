@@ -571,6 +571,7 @@ public final class FaceDetectRGBActivity extends AppCompatActivity implements Su
             float xScale = (float) previewWidth / (float) prevSettingWidth;
             float yScale = (float) previewHeight / (float) h;
 
+
             Camera.CameraInfo info = new Camera.CameraInfo();
             Camera.getCameraInfo(cameraId, info);
             int rotate = mDisplayOrientation;
@@ -626,6 +627,12 @@ public final class FaceDetectRGBActivity extends AppCompatActivity implements Su
                             (int) (mid.x + eyesDis * 1.20f),
                             (int) (mid.y + eyesDis * 1.85f));
 
+//                            (int) (mid.x - eyesDis),
+//                            (int) (mid.y - eyesDis*10.00f),
+//                            (int) (mid.x + eyesDis),
+//                            (int) (mid.y + eyesDis*5.00f));
+
+
                     /**
                      * Only detect face size > 100x100
                      */
@@ -641,6 +648,11 @@ public final class FaceDetectRGBActivity extends AppCompatActivity implements Su
                                     (midPre.y - eyesDisPre * 1.15f),
                                     (midPre.x + eyesDisPre * 1.5f),
                                     (midPre.y + eyesDisPre * 1.85f));
+
+//                                    (midPre.x - eyesDisPre),
+//                                    (midPre.y - eyesDisPre*10.00f),
+//                                    (midPre.x + eyesDisPre),
+//                                    (midPre.y + eyesDisPre*5.00f));
 
                             if (rectCheck.contains(mid.x, mid.y) && (System.currentTimeMillis() - faces_previous[j].getTime()) < 1000) {
                                 idFace = faces_previous[j].getId();
