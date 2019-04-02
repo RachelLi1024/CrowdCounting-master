@@ -71,9 +71,9 @@ public class FaceView extends View {
 
     private void drawFaceBox(Canvas canvas, double scale) {
 
-        Paint paint = new Paint();
-        paint.setColor(Color.GREEN);
-        paint.setStyle(Paint.Style.STROKE);
+        Paint paint = new Paint(); //Create a brush
+        paint.setColor(Color.GREEN); //Set the color of the brush
+        paint.setStyle(Paint.Style.STROKE); //Set the brush style to bold
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         int stroke = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, metrics);
         paint.setStrokeWidth(stroke);

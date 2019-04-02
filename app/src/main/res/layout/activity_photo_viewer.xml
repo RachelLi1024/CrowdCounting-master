@@ -6,7 +6,10 @@
 
     >
 
+
+
     <RelativeLayout
+        android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -31,6 +34,7 @@
             android:layout_toRightOf="@id/resultPic"
             android:textColor="#d6204b" />
 
+
     </RelativeLayout>
 
 
@@ -43,17 +47,19 @@
         <m.tri.facedetectcamera.activity.ui.FaceView
             android:id="@+id/faceView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="400dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/faceView"
+            android:layout_marginTop="400dp"
+            android:scrollbars="horizontal" />
     </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="@dimen/image_preview"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:scrollbars="vertical" />
 
 
 </RelativeLayout>

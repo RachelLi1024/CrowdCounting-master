@@ -136,7 +136,11 @@ public class ImageUtils {
                 (int) (mid.x + eyesDis * 1.20f),
                 (int) (mid.y + eyesDis * 1.85f));
 
+        //To use Android's built-in face detector,
+        //the Bitmap must be converted to RGB_565 format
+        // otherwise it cannot be recognized
         Bitmap.Config config = Bitmap.Config.RGB_565;
+
         if (bitmap.getConfig() != null) config = bitmap.getConfig();
         bmp = bitmap.copy(config, true);
 

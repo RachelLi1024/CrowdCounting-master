@@ -230,7 +230,6 @@ public final class FaceDetectRGBActivity extends AppCompatActivity implements Su
 //            Bitmap photo = (Bitmap) data.getExtras().get("data");
 
             //Broadcast to refresh the gallery
-
             Intent intentBc = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
             intentBc.setData(imageUri);
             this.sendBroadcast(intentBc);
@@ -661,10 +660,9 @@ public final class FaceDetectRGBActivity extends AppCompatActivity implements Su
 
                         }
 
-                        if (idFace == Id) {
+                        if (idFace == Id)
                             Id++;
 
-                        }
 
                      /*  Imgproc.putText(mRgba,  "Counter: " + counterW,
                                 new Point( 20,  60),

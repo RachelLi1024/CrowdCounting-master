@@ -53,6 +53,7 @@ public class PhotoDetectActivity extends AppCompatActivity {
     int counterW = 0;
     private TextView cntPic;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +66,20 @@ public class PhotoDetectActivity extends AppCompatActivity {
 
         faceView = (FaceView) findViewById(R.id.faceView);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+     //   RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+//        LinearLayoutManager ms= new LinearLayoutManager(this);
+//        ms.setOrientation(LinearLayoutManager.HORIZONTAL);// set recyclerview to be horizontal
+//        recyclerView.setLayoutManager(ms);
+
+        LinearLayoutManager mLayoutManager= new LinearLayoutManager(this);
+        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);// set recyclerview to be horizontal
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+//        adapter = new RecyclerViewAdapter(this, datas);
+//        recyclerView.setAdapter(adapter);
+
 
         int rc = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (rc == PackageManager.PERMISSION_GRANTED) {
